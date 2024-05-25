@@ -4,10 +4,8 @@ import { auth, googleProvider } from "../FirebaseConfig/firebase.config";
 
 // sign in with google
 export const signInWithGoogle = async () => {
-  console.log(auth);
   try {
     const response = await signInWithPopup(auth, googleProvider);
-    console.log(response);
     return response;
   } catch (error) {
     console.log("Arya popup");

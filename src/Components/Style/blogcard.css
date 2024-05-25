@@ -7,11 +7,10 @@
   transition: transform 0.3s ease-in-out;
   flex-basis: 28%;
 }
-.card-item:hover{
-    transform: scale(1.05);
+.card-item:hover {
+  transform: scale(1.05);
 }
 .image-container {
-  width: 350px;
   height: 200px;
   overflow: hidden;
 }
@@ -26,9 +25,8 @@
   flex-direction: column;
   gap: 1rem;
   color: black;
-  padding:1rem 0.5rem;
+  padding: 1rem 0.5rem;
   text-transform: capitalize;
-
 }
 .blog-type-container {
   padding: 0.2rem 0.6rem;

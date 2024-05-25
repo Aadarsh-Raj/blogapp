@@ -1,7 +1,6 @@
 import React from "react";
 import "./Style/blogcard.css";
 const BlogCard = (props) => {
-  console.log(props);
   return (
     <>
       <div className="card-item">
