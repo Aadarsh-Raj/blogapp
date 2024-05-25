@@ -105,16 +105,31 @@ const BlogEditor = () => {
 
       if (
         !userCtx.title ||
-        !postDate ||
-        !userCtx.userEmail ||
         !userCtx.contentValue ||
         !userCtx.contentType ||
         !userCtx.contentImage
       ) {
-        userCtx.setDialogMessage(
-          "Please try again"
-        );
         userCtx.setDialogAppear(true);
+        if(!userCtx.title){
+          userCtx.setDialogMessage(
+            "Please add title"
+          );
+        }
+        if(!userCtx.contentType){
+          userCtx.setDialogMessage(
+            "Please add type"
+          );
+        }
+        if(!userCtx.contentImage){
+          userCtx.setDialogMessage(
+            "Please add Blog image"
+          );
+        }
+        if(!userCtx.contentValue){
+          userCtx.setDialogMessage(
+            "Please add content to your Blog"
+          );
+        }
         return;
       }
       await set(newDocRef, {
