@@ -23,89 +23,90 @@
 
 .navbar {
   position: relative;
-  /* box-sizing: border-box; */
-  width: fit-content;
 }
+/* From uiverse.io by @satyamchaudharydev */
+/* removing default style of button */
 
-.mainbox {
-  /* box-sizing: border-box; */
+.form button {
+  border: none;
+  background: none;
+  color: rgb(228, 221, 221);
+  margin-top: 9px;
+}
+/* styling of whole input container */
+.form {
+  --timing: 0.3s;
+  --width-of-input: 200px;
+  --height-of-input: 40px;
+  --border-height: 2px;
+  --input-bg:#19242b;
+  --border-color: #2f2ee9;
+  --border-radius: 30px;
+  --after-border-radius: 1px;
   position: relative;
-  width: 230px;
-  height: 50px;
+  width: var(--width-of-input);
+  height: var(--height-of-input);
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
-  justify-content: center;
-  border-radius: 160px;
-  background-color: rgb(0, 0, 0);
-  transition: all 0.3s ease;
+  padding-inline: 0.8em;
+  border-radius: var(--border-radius);
+  transition: border-radius 0.5s ease;
+  background: var(--input-bg,#fff);
 }
-
-.checkbox:focus {
-  border: none;
-  outline: none;
-}
-
-.checkbox:checked {
-  right: 10px;
-}
-
-.checkbox:checked ~ .mainbox {
-  width: 50px;
-}
-
-.checkbox:checked ~ .mainbox .search_input {
-  width: 0;
-  height: 0px;
-}
-
-.checkbox:checked ~ .mainbox .iconContainer {
-  padding-right: 8px;
-}
-
-.checkbox {
-  /* box-sizing: border-box; */
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  right: 17px;
-  top: 10px;
-  z-index: 9;
-  cursor: pointer;
-  appearance: none;
-}
-
-.search_input {
-  /* box-sizing: border-box; */
-  height: 100%;
-  width: 170px;
+/* styling of Input */
+.input {
+  font-size: 0.9rem;
   background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
   border: none;
+  font-weight: bold;
+}
+/* styling of animated border */
+.form:before {
+  content: "";
+  position: absolute;
+  background: var(--border-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: var(--border-height);
+  left: 0;
+  bottom: 0;
+  border-radius: 1px;
+  transition: transform var(--timing) ease;
+}
+/* Hover on Input */
+.form:focus-within {
+  border-radius: var(--after-border-radius);
+}
+
+input:focus {
   outline: none;
-  padding-bottom: 4px;
-  padding-left: 10px;
-  font-size: 1em;
-  color: white;
-  transition: all 0.3s ease;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-
-.search_input::placeholder {
-  color: rgba(255, 255, 255, 0.776);
+/* here is code of animated border */
+.form:focus-within:before {
+  transform: scale(1);
 }
-
-.iconContainer {
-  /* box-sizing: border-box; */
-  padding-top: 5px;
-  width: fit-content;
-  transition: all 0.3s ease;
+/* styling of close button */
+/* == you can click the close button to remove text == */
+.reset {
+  border: none;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
 }
-
-.search_icon {
-  box-sizing: border-box;
-  fill: white;
-  font-size: 1.3em;
+/* close button shown when typing */
+input:not(:placeholder-shown) ~ .reset {
+  opacity: 1;
+  visibility: visible;
+}
+/* sizing svg icons */
+.form svg {
+  width: 17px;
+  margin-top: 3px;
 }
 
 /* mera wala  */
@@ -145,7 +146,9 @@
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0, 0.87, 0.12, 1);
 }
-
+.signin .half-text-btn {
+  display: none;
+}
 .signin:hover {
   transform: scale(1.025);
 }
@@ -202,16 +205,7 @@ button svg {
     gap: 1rem;
     padding: 0.8rem 1rem;
   }
-  .search-bar {
-    width: 40px;
-    transition: width 0.2s ease-in;
-  }
-  .search-bar::placeholder {
-    font-size: 0.7rem;
-  }
-  .search-bar:focus {
-    width: 90px;
-  }
+  
   .more-options,
   .more-options-lists li {
     width: 90px;
@@ -227,4 +221,14 @@ button svg {
   .more-options-lists li {
     width: 100%;
   }
+  .full-text-btn {
+    display: none;
+  }
+  .signin .half-text-btn {
+    display: initial;
+  }
+  .form{
+    width: 43px;
+  }
+  
 }
