@@ -63,6 +63,7 @@
   padding-block: 0.7em;
   border: none;
   font-weight: bold;
+  color:white;
 }
 /* styling of animated border */
 .form:before {
@@ -228,7 +229,7 @@ button svg {
     display: initial;
   }
   .form{
-    width: 43px;
+    width: 63px;
   }
   
 }

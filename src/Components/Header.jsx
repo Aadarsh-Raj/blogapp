@@ -5,6 +5,7 @@ import { UserFunction } from "../Context/UserContext";
 import { signInWithGoogle, logoutUser } from "../Utils/helper";
 const Header = () => {
   const userCtx = UserFunction();
+  const [isActive, setIsActive] = useState(false);
   const [navList, setNavList] = useState([]);
   const navigate = useNavigate();
 
@@ -36,6 +37,7 @@ const Header = () => {
   function searchBlog(e) {
     const value = e.target.value.toLowerCase();
     if (value !== "") {
+      setIsActive(true)
       const result = userCtx.blogUploadedArray.filter(
         (ele) =>
           ele.title.toLowerCase().includes(value) ||
@@ -43,6 +45,7 @@ const Header = () => {
       );
       setNavList(result);
     } else {
+      setIsActive(false);
       setNavList([]);
     }
   }
@@ -60,8 +63,8 @@ const Header = () => {
 
         <div className="header-right">
           <nav class="navbar">
-            <form class="form">
-              <button type="button">
+            <form class="form" style={{ width: isActive ? "150px" : "50px" }}>
+              <button type="button" onClick={()=>setIsActive(true)}>
                 <svg
                   width="17"
                   height="16"
