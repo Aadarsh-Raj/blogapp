@@ -11,7 +11,9 @@ Welcome to the Blog Poster Website! This platform offers a comprehensive solutio
 <br>
 
 ## Getting Started
-To start using the Blog Poster Website, simply create an account or log in with your existing credentials. Once authenticated, you can immediately start writing and publishing your blog posts.
+To start using the Blog Poster Website, simply log in with your existing google account throught the given link. Once authenticated, you can immediately start writing and publishing your blog posts.
+<br>
+Link -> [Click Here](https://main--arya-blog-poster.netlify.app/)
 <br> <br>
 
 Enjoy a seamless blogging experience with our feature-rich platform designed to enhance your writing journey!
