@@ -5,6 +5,8 @@ import { UserFunction } from "./Context/UserContext";
 import Header from "./Components/Header";
 import BlogEditor from "./Components/BlogEditor";
 import DialogueBox from "./Components/DialogueBox";
+import BlogPostPage from "./Components/BlogPostPage";
+import Footer from "./Components/Footer";
 function App() {
   const userCtx = UserFunction();
   function handleCloseDialog() {
@@ -17,8 +19,11 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path={ "/post"} element={userCtx.user ?<BlogEditor />: <Home />} />
+          <Route path={ "/post"} element={userCtx.user ?<BlogEditor /> : <Home />} />
+          <Route path={ "/post/:id"} element={<BlogPostPage />} />
+
         </Routes>
+        <Footer />
       </main>
     </>
   );

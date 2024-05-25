@@ -23,6 +23,7 @@ const UserContext = ({ children }) => {
     "Welcome to Vizmo Blog Poster"
   );
   const [progress, setProgress] = useState(0);
+  const [blogUploadedArray, setBlogUploadedArray] = useState([]);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -64,6 +65,8 @@ const UserContext = ({ children }) => {
     setDialogMessage,
     progress,
     setProgress,
+    blogUploadedArray,
+    setBlogUploadedArray,
   };
 
   return (

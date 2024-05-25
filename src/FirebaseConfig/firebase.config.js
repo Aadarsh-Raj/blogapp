@@ -11,9 +11,11 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGEBUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
-  databaseURL:process.env.REACT_DATABASE_URL
+  databaseURL:
+    "https://blog-ecce1-default-rtdb.asia-southeast1.firebasedatabase.app",
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
-// const app = getApps.length > 0 ? getApp() : initializeApp(firebaseConfig);
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

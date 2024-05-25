@@ -17,31 +17,7 @@ const BlogEditor = () => {
   const userCtx = UserFunction();
   const [progress, setProgress] = useState(0);
   const [file, setFile] = useState(null);
-  // uploading blog on db
-  function saveBlog() {
-    uploadImageOnDb();
-    const db = getDatabase(app);
-    const postDate = formatDate(Date.now());
-    const newDocRef = push(dbRef(db, "blog"));
-    console.log(db, postDate, newDocRef);
-    set(newDocRef, {
-      id: uuidv4(),
-      title: userCtx.title,
-      postDate: postDate,
-      userEmail: userCtx.userEmail,
-      content: userCtx.contentValue,
-      type: userCtx.contentType,
-      profilePic: userCtx.profileUrl,
-      blogImage: userCtx.contentImage,
-    })
-      .then(() => {
-        userCtx.setDialogMessage("Blog Posted!");
-        userCtx.setDialogAppear(true);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
+
   // state management for content in editor
   const handleChange = (content, delta, source, editor) => {
     userCtx.setContentValue(content);
@@ -74,12 +50,15 @@ const BlogEditor = () => {
   function handleFileChange(e) {
     if (e.target.files[0]) {
       setFile(e.target.files[0]);
+      userCtx.setDialogMessage("Images Uploaded!");
+      userCtx.setDialogAppear(true);
     }
   }
   // function to be called while saving blog on db for saving image url
   function uploadImageOnDb() {
     if (!file) {
-      alert("No file found");
+      userCtx.setDialogMessage("Please upload a blog image");
+      userCtx.setDialogAppear(true);
       return;
     }
 
@@ -103,6 +82,37 @@ const BlogEditor = () => {
       }
     );
   }
+
+  const saveBlog = async () => {
+    try {
+     await uploadImageOnDb(); // Wait for the image upload to complete
+      const db = getDatabase(app);
+      const postDate = formatDate(Date.now());
+      const newDocRef = push(dbRef(db, "blog"));
+
+     if(!userCtx.title || !postDate || !userCtx.userEmail || !userCtx.contentValue || !userCtx.contentType || !userCtx.contentImage){
+
+      userCtx.setDialogMessage("Some datas are missing, Please check once or contact to developer");
+      userCtx.setDialogAppear(true);
+      return;
+     }
+      await set(newDocRef, {
+        id: uuidv4(),
+        title: userCtx.title,
+        postDate: postDate,
+        userEmail: userCtx.userEmail,
+        content: userCtx.contentValue,
+        type: userCtx.contentType,
+        profilePic: userCtx.profileUrl,
+        blogImage: userCtx.contentImage,
+      });
+      userCtx.setDialogMessage("Blog Posted!");
+      userCtx.setDialogAppear(true);
+    } catch (error) {
+      userCtx.setDialogMessage("Something went Wrong");
+      userCtx.setDialogAppear(true);
+    }
+  };
   return (
     <div
       className="editor-container"
@@ -158,7 +168,7 @@ const BlogEditor = () => {
         className="custom-editor"
       />
       <div className="image-input-container">
-        Add image
+        {file ? "Uploaded" : "Add Image"}
         <input
           type="file"
           accept="image/png, image/jpg, image/jpeg"

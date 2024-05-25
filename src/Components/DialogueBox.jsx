@@ -31,7 +31,7 @@ const DialogueBox = ({ duration, onClose }) => {
           top: "1rem",
           left: "50%",
           transform: "translateX(-50%)",
-          zIndex:"55555555"
+          zIndex: "55555555",
         }}
       >
         <MuiAlert
