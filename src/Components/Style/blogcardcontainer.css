@@ -6,3 +6,8 @@
    flex-wrap: wrap;
    margin: 1.5rem 0;
 }
+.blog-card-container a{
+   display: flex;
+   flex-direction: column;
+   flex-basis: 30%;
+}

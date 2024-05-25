@@ -5,6 +5,7 @@
   border-radius: 0.6rem;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  flex-basis: 28%;
 }
 .card-item:hover{
     transform: scale(1.05);

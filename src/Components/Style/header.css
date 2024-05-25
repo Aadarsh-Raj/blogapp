@@ -107,4 +107,14 @@
       width: 90px;
       padding:0.7rem 0.4rem;
     }
+    .search-list{
+      width: 400px;
+      left: -13.2rem;
+    }
+    .search-bar:focus~.search-list{
+      left: -11.2rem;
+    }
+    .more-options-lists li{
+      width: 100%;
+    }
 }
