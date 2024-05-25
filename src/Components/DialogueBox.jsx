@@ -45,7 +45,6 @@ const DialogueBox = ({ duration, onClose }) => {
           }}
         >
           {userCtx.dialogMessage}
-          <LinearProgress variant="determinate" value={userCtx.progress} />
         </MuiAlert>
       </Snackbar>
     </>

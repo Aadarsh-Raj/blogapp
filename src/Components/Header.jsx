@@ -49,19 +49,36 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <div className="logo-container">
-          <img
-            src="https://vizmo.in/blog/content/images/2022/10/Vizmo-V1--8.png"
-            alt=""
-          />
-        </div>
-        <nav className="navbar">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search"
-            onChange={searchBlog}
-          />
+        <Link to="/">
+          <div className="logo-container">
+            <img
+              src="https://vizmo.in/blog/content/images/2022/10/Vizmo-V1--8.png"
+              alt=""
+            />
+          </div>
+        </Link>
+
+        <div className="header-right">
+        <nav class="navbar">
+          <input checked="" class="checkbox" type="checkbox" />
+          <div class="mainbox">
+            <div class="iconContainer">
+              <svg
+                viewBox="0 0 512 512"
+                height="1em"
+                xmlns="http://www.w3.org/2000/svg"
+                class="search_icon"
+              >
+                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+              </svg>
+            </div>
+            <input
+              class="search_input"
+              placeholder="search"
+              type="text"
+              onChange={searchBlog}
+            />
+          </div>
           {navList.length > 0 && (
             <ul className="search-list">
               {navList.map((ele) => (
@@ -80,13 +97,14 @@ const Header = () => {
                     }}
                     key={ele.id}
                   >
-                    <li onClick={()=>setNavList([])}>{ele.title}</li>
+                    <li onClick={() => setNavList([])}>{ele.title}</li>
                   </Link>
                 </>
               ))}
             </ul>
           )}
         </nav>
+
         {userCtx.user ? (
           <div className="more-options">
             More
@@ -104,36 +122,32 @@ const Header = () => {
           </div>
         ) : (
           <button className="signin" onClick={loginWithGoogleBtn}>
-            <svg width="720" height="720" viewBox="0 0 186.69 190.5">
-              <g transform="translate(1184.583 765.171)">
-                <path
-                  clip-path="none"
-                  mask="none"
-                  d="M-1089.333-687.239v36.888h51.262c-2.251 11.863-9.006 21.908-19.137 28.662l30.913 23.986c18.011-16.625 28.402-41.044 28.402-70.052 0-6.754-.606-13.249-1.732-19.483z"
-                  fill="#4285f4"
-                ></path>
-                <path
-                  clip-path="none"
-                  mask="none"
-                  d="M-1142.714-651.791l-6.972 5.337-24.679 19.223h0c15.673 31.086 47.796 52.561 85.03 52.561 25.717 0 47.278-8.486 63.038-23.033l-30.913-23.986c-8.486 5.715-19.31 9.179-32.125 9.179-24.765 0-45.806-16.712-53.34-39.226z"
-                  fill="#34a853"
-                ></path>
-                <path
-                  clip-path="none"
-                  mask="none"
-                  d="M-1174.365-712.61c-6.494 12.815-10.217 27.276-10.217 42.689s3.723 29.874 10.217 42.689c0 .086 31.693-24.592 31.693-24.592-1.905-5.715-3.031-11.776-3.031-18.098s1.126-12.383 3.031-18.098z"
-                  fill="#fbbc05"
-                ></path>
-                <path
-                  d="M-1089.333-727.244c14.028 0 26.497 4.849 36.455 14.201l27.276-27.276c-16.539-15.413-38.013-24.852-63.731-24.852-37.234 0-69.359 21.388-85.032 52.561l31.692 24.592c7.533-22.514 28.575-39.226 53.34-39.226z"
-                  fill="#ea4335"
-                  clip-path="none"
-                  mask="none"
-                ></path>
-              </g>
+            <svg
+              viewBox="0 0 256 262"
+              preserveAspectRatio="xMidYMid"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"
+                fill="#4285F4"
+              ></path>
+              <path
+                d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"
+                fill="#34A853"
+              ></path>
+              <path
+                d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"
+                fill="#FBBC05"
+              ></path>
+              <path
+                d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"
+                fill="#EB4335"
+              ></path>
             </svg>
+            Sign in with Google
           </button>
         )}
+        </div>
       </header>
     </>
   );
