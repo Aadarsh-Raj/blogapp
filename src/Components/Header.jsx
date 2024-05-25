@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Style/header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserFunction } from "../Context/UserContext";
 import { signInWithGoogle, logoutUser } from "../Utils/helper";
 const Header = () => {
   const userCtx = UserFunction();
+  const [navList, setNavList] = useState([]);
   const navigate = useNavigate();
 
   async function loginWithGoogleBtn() {
@@ -32,6 +33,19 @@ const Header = () => {
       console.log(error);
     }
   }
+  function searchBlog(e) {
+    const value = e.target.value.toLowerCase();
+    if (value !== "") {
+      const result = userCtx.blogUploadedArray.filter(
+        (ele) =>
+          ele.title.toLowerCase().includes(value) ||
+          ele.type.toLowerCase().includes(value)
+      );
+      setNavList(result);
+    } else {
+      setNavList([]);
+    }
+  }
   return (
     <>
       <header className="header">
@@ -42,7 +56,36 @@ const Header = () => {
           />
         </div>
         <nav className="navbar">
-          <input type="text" className="search-bar" placeholder="Search" />
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search"
+            onChange={searchBlog}
+          />
+          {navList.length > 0 && (
+            <ul className="search-list">
+              {navList.map((ele) => (
+                <>
+                  <Link
+                    to={`/post/${ele.id}`}
+                    state={{
+                      title: ele.title,
+                      blogImage: ele.blogImage,
+                      id: ele.id,
+                      content: ele.content,
+                      postDate: ele.postDate,
+                      profilePic: ele.profilePic,
+                      userEmai: ele.userEmail,
+                      type: ele.type,
+                    }}
+                    key={ele.id}
+                  >
+                    <li onClick={()=>setNavList([])}>{ele.title}</li>
+                  </Link>
+                </>
+              ))}
+            </ul>
+          )}
         </nav>
         {userCtx.user ? (
           <div className="more-options">

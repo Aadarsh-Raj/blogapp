@@ -16,12 +16,28 @@
 .logo-container img {
   width: 100%;
 }
-
+.navbar{
+  position: relative;
+}
 .search-bar {
   padding: 0.4rem;
-  outline: none;
   border-radius: 0.8rem;
   width: 300px;
+}
+.search-list{
+  position: absolute;
+  background-color: rgba(255, 251, 251, 0.808);
+  width: 100%;
+  list-style: none;
+  border-radius: 0 0 1rem 1rem;
+  top: 2.5rem;
+  border: 2px solid gray;
+}
+.search-list li{
+  padding: 1rem;
+  text-transform: capitalize;
+  border-bottom: 2px solid rgba(36, 32, 32, 0.564);
+  color: black;
 }
 
 .signin {
@@ -78,6 +94,13 @@
         padding: 0.8rem 1rem;
     }
     .search-bar{
+      width: 40px;
+      transition: width 0.2s ease-in;
+    }
+    .search-bar::placeholder{
+      font-size: 0.7rem;
+    }
+    .search-bar:focus{
       width: 90px;
     }
     .more-options,.more-options-lists li{

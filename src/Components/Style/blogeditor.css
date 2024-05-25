@@ -1,10 +1,12 @@
 .editor-container {
-  height: 90%;
+  height: 100%;
   background-color: rgb(192, 116, 116);
   position: relative;
+  overflow: hidden;
 }
 .custom-editor {
   height: 100%;
+  overflow-y: scroll;
 }
 .editor-header {
   display: flex;
@@ -36,7 +38,7 @@
 
 .image-input-container {
   position: fixed;
-  bottom: 6.75rem;
+  bottom: 7.5rem;
   right: 1rem;
   padding: 1rem;
   font-size: 0.8rem;
@@ -44,8 +46,8 @@
   border-radius: 0.8rem;
   font-weight: bold;
   overflow: hidden;
-  border: 1px solid;
   color: black !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .image-input-container input {
   position: absolute;
@@ -59,15 +61,16 @@
 
 .save-blog-btn {
   position: fixed;
-  bottom: 2.5rem;
+  bottom: 3.75rem;
   right: 1.5rem;
   padding: 1rem 1.2rem;
   border-radius: 0.8rem;
   border: none;
   color: white;
-  background-color: black;
+  background-color: rgb(230, 36, 36);
   font-weight: bolder;
   cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.259) 0px 50px 100px -20px, rgba(0, 0, 0, 0.325) 0px 30px 60px -30px, rgba(10, 37, 64, 0.789) 0px -2px 6px 0px inset;
 }
 
 @media screen and (max-width:600px) {

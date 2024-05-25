@@ -11,7 +11,6 @@ import {
 import { app, storage } from "../FirebaseConfig/firebase.config";
 import { v4 as uuidv4 } from "uuid";
 import { UserFunction } from "../Context/UserContext";
-import { func } from "prop-types";
 
 const BlogEditor = () => {
   const userCtx = UserFunction();
@@ -41,7 +40,21 @@ const BlogEditor = () => {
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
+    const monthValue = {
+      1: "Jan",
+      2: "Feb",
+      3: "Mar",
+      4: "Apr",
+      5: "May",
+      6: "Jun",
+      7: "Jul",
+      8: "Aug",
+      9: "Sep",
+      10: "Oct",
+      11: "Nov",
+      12: "Dec",
+    };
+    return `${monthValue[month]}-${day}-${year}`;
   }
   // state management for type change
   function changeType(e) {
@@ -85,17 +98,25 @@ const BlogEditor = () => {
 
   const saveBlog = async () => {
     try {
-     await uploadImageOnDb(); // Wait for the image upload to complete
+      await uploadImageOnDb(); // Wait for the image upload to complete
       const db = getDatabase(app);
       const postDate = formatDate(Date.now());
       const newDocRef = push(dbRef(db, "blog"));
 
-     if(!userCtx.title || !postDate || !userCtx.userEmail || !userCtx.contentValue || !userCtx.contentType || !userCtx.contentImage){
-
-      userCtx.setDialogMessage("Some datas are missing, Please check once or contact to developer");
-      userCtx.setDialogAppear(true);
-      return;
-     }
+      if (
+        !userCtx.title ||
+        !postDate ||
+        !userCtx.userEmail ||
+        !userCtx.contentValue ||
+        !userCtx.contentType ||
+        !userCtx.contentImage
+      ) {
+        userCtx.setDialogMessage(
+          "Some datas are missing, Please check once or contact to developer"
+        );
+        userCtx.setDialogAppear(true);
+        return;
+      }
       await set(newDocRef, {
         id: uuidv4(),
         title: userCtx.title,
