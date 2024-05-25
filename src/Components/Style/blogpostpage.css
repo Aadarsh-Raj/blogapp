@@ -1,10 +1,13 @@
+
 .blog-post-page-container {
-  overflow-y: scroll;
   padding: 0.5rem 5.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.blog-post-page-container a{
+  color: blue;
 }
 .blog-page-image-container {
   width: 100%;

@@ -112,7 +112,7 @@ const BlogEditor = () => {
         !userCtx.contentImage
       ) {
         userCtx.setDialogMessage(
-          "Some datas are missing, Please check once or contact to developer"
+          "Please try again"
         );
         userCtx.setDialogAppear(true);
         return;
