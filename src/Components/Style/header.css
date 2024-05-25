@@ -1,0 +1,87 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3.5rem;
+  align-items: center;
+  border-bottom: 2px solid gray;
+  position: sticky;
+  top: 0;
+  z-index: 2222;
+  background-color: white;
+}
+.logo-container{
+    width: 100px;
+    cursor: pointer;
+}
+.logo-container img {
+  width: 100%;
+}
+
+.search-bar {
+  padding: 0.4rem;
+  outline: none;
+  border-radius: 0.8rem;
+  width: 300px;
+}
+
+.signin {
+  width: 45px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.signin svg {
+  width: 100%;
+  height: 100%;
+}
+
+.more-options{
+  background-color: black;
+  color: white;
+  border-radius: 0.4rem;
+  width: 120px;
+  padding: 0.8rem 0;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in;
+}
+.more-options-lists{
+  display: block;
+  position: absolute;
+  top: 2.12rem;
+  left: 0;
+  background-color: black;
+  list-style: none;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in, visibility 0.3s ease-in;
+}
+.more-options-lists li{
+  border-bottom: 2px solid gray;
+  padding: 0.8rem;
+  width: 120px;
+}
+.more-options:hover .more-options-lists{
+  display:block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+@media screen and (max-width:600px) {
+    .header{
+        top: -4rem;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+    }
+    .search-bar{
+      width: 90px;
+    }
+    .more-options,.more-options-lists li{
+      width: 90px;
+      padding:0.7rem 0.4rem;
+    }
+}

@@ -1,0 +1,88 @@
+.editor-container {
+  height: 90%;
+  background-color: rgb(192, 116, 116);
+  position: relative;
+}
+.custom-editor {
+  height: 100%;
+}
+.editor-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 3.5rem;
+}
+.editor-header>div{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.title-input-bar,
+.type-input-bar {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+.color-input {
+  outline: none;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.image-input-container {
+  position: fixed;
+  bottom: 6.75rem;
+  right: 1rem;
+  padding: 1rem;
+  font-size: 0.8rem;
+  background-color: white !important;
+  border-radius: 0.8rem;
+  font-weight: bold;
+  overflow: hidden;
+  border: 1px solid;
+  color: black !important;
+}
+.image-input-container input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.save-blog-btn {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 1.5rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0.8rem;
+  border: none;
+  color: white;
+  background-color: black;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+@media screen and (max-width:600px) {
+  .editor-header{
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+.editor-header>div{
+  justify-content: space-evenly;
+  gap:0;
+}
+.editor-header>div:nth-child(2){
+  justify-content: space-around;
+}
+.text-input-container{
+  overflow: hidden;
+}
+}
