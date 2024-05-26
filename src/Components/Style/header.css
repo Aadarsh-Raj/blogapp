@@ -231,5 +231,11 @@ button svg {
   .form{
     width: 63px;
   }
-  
+  .signin{
+    padding: 0.5rem;
+    gap: 0.3rem;
+  }
+  .signin svg{
+    height: 20px;
+  }
 }
