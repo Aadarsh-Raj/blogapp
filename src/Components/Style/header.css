@@ -214,7 +214,7 @@ button svg {
   }
   .search-list {
     width: 400px;
-    left: -13.2rem;
+    left: -8.5rem;
   }
   .search-bar:focus ~ .search-list {
     left: -11.2rem;
